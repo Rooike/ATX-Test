@@ -14,7 +14,6 @@ from Public.BasePage import BasePage
 from Public.Log import Log
 from Public.ReadConfig import ReadConfig
 from Public.chromedriver import ChromeDriver
-from Public.Test_data import generate_test_data
 from Public.Report import create_statistics_report
 
 
@@ -75,7 +74,7 @@ class Drivers:
             return
 
         # generate test data data.json 准备测试数据
-        generate_test_data(devices)
+        # generate_test_data(devices)
 
         print('Starting Run test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
         runs = []

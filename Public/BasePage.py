@@ -153,7 +153,6 @@ class BasePage(object):
         cls.d.press('back')
         time.sleep(1)
 
-
     @classmethod
     def identify(cls):
         cls.d.open_identify()
@@ -242,6 +241,9 @@ class BasePage(object):
     def _swipe(self, fromX, fromY, toX, toY, steps):
         self.d.swipe(fromX, fromY, toX, toY, steps)
 
+    def swipe_custom(self, fromX, fromY, toX, toY, steps):
+        self.d.swipe(fromX, fromY, toX, toY, steps)
+
     def swipe_up(self, element=None, steps=0.2):
         """
         swipe up
@@ -252,15 +254,20 @@ class BasePage(object):
         if element:
             x_left, y_up, x_center, y_center, x_right, y_down = self._get_element_size(element)
             fromX = x_center
-            fromY = y_center
+            # fromY = y_center
+            fromY = y_down
             toX = x_center
             toY = y_up
+            # print(fromY)
+            # print(toY)
         else:
             x, y = self._get_window_size()
             fromX = 0.5 * x
             fromY = 0.5 * y
             toX = 0.5 * x
             toY = 0.25 * y
+            # print(fromY)
+            # print(toY)
 
         self._swipe(fromX, fromY, toX, toY, steps)
 

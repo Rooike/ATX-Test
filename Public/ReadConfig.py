@@ -3,11 +3,12 @@
 import configparser
 import os
 
-
 proDir = os.path.split(os.path.realpath(__file__))[0]
-#将path分割成路径名和文件名
+# 将path分割成路径名和文件名
 configPath = os.path.join(proDir, "config.ini")
-#将多个路径组合后返回
+
+
+# 将多个路径组合后返回
 
 class ReadConfig:
     def __init__(self):
@@ -38,11 +39,18 @@ class ReadConfig:
         value = self.cf.get("APP", "pkg_name")
         return value
 
-    def get_testdata(self, name):
-        value = self.cf.get("TESTDATA", name)
+    # def get_testdata(self, name):
+    #     value = self.cf.get("TESTDATA", name)
+    #     return value.split('/')
+
+    def get_citys_list(self, key):
+        value = self.cf.get("ANJVKE", key)
         return value.split('/')
 
+    def get_config_func(self):
+        value = self.cf.get("GEN_DATA_FUNC", "func_name")
+        return value
 
-# if __name__ == '__main__':
-#     print(ReadConfig().get_pkg_name())
-#     print(ReadConfig().get_testdata('user_name'))
+if __name__ == '__main__':
+    print(ReadConfig().get_pkg_name())
+    print(ReadConfig().get_config_func())
